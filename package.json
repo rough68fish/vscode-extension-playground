@@ -32,6 +32,23 @@
           "description": "The directory that contains your requirements specifications."
         }
       }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "helloworld-activitybar",
+          "title": "HelloWorld",
+          "icon": "resources/helloworld-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "helloworld-activitybar": [
+        {
+          "id": "helloworldView",
+          "name": "HelloWorld View"
+        }
+      ]
     }
   },
   "scripts": {

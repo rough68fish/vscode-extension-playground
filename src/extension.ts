@@ -47,9 +47,47 @@ export function activate(context: vscode.ExtensionContext) {
 		} else {
 		  vscode.window.showErrorMessage(`Requirements Directory '${requirementsDirectory}' not found.`);
 		}
-	  });
+	});
 	
-	  context.subscriptions.push(checkRequirementsDisposable);
+	context.subscriptions.push(checkRequirementsDisposable);
+
+	const helloworldViewProvider = new HelloWorldViewProvider(context.extensionUri);
+	context.subscriptions.push(
+	  vscode.window.registerWebviewViewProvider(HelloWorldViewProvider.viewType, helloworldViewProvider)
+	);
+}
+
+class HelloWorldViewProvider implements vscode.WebviewViewProvider {
+	public static readonly viewType = 'helloworld.helloworldView';
+  
+	constructor(private readonly extensionUri: vscode.Uri) {}
+  
+	public resolveWebviewView(
+	  webviewView: vscode.WebviewView,
+	  context: vscode.WebviewViewResolveContext,
+	  _token: vscode.CancellationToken
+	) {
+	  webviewView.webview.options = {
+		enableScripts: true,
+		localResourceRoots: [this.extensionUri]
+	  };
+  
+	  webviewView.webview.html = this.getHtmlForWebview(webviewView.webview);
+	}
+  
+	private getHtmlForWebview(webview: vscode.Webview): string {
+	  return `<!DOCTYPE html>
+		<html lang="en">
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  <title>Hello World</title>
+		</head>
+		<body>
+		  <h1>Hello World View</h1>
+		</body>
+		</html>`;
+	}
 }
 
 // This method is called when your extension is deactivated
