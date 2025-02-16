@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -20,6 +22,34 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	const checkRequirementsDisposable = vscode.commands.registerCommand('helloworld.checkRequirements', async () => {
+		const config = vscode.workspace.getConfiguration('helloworld');
+		const requirementsDirectory = config.get<string>('requirementsDirectory', './docs/requirements');
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+	
+		if (!workspaceFolders) {
+		  vscode.window.showErrorMessage('No workspace is currently open.');
+		  return;
+		}
+	
+		const workspacePath = workspaceFolders[0].uri.fsPath;
+		const requirementsPath = path.join(workspacePath, requirementsDirectory);
+	
+		if (fs.existsSync(requirementsPath)) {
+		  fs.readdir(requirementsPath, (err, files) => {
+			if (err) {
+			  vscode.window.showErrorMessage(`Error reading directory: ${err.message}`);
+			  return;
+			}
+			vscode.window.showInformationMessage(`Requirements Directory found with ${files.length} files.`);
+		  });
+		} else {
+		  vscode.window.showErrorMessage(`Requirements Directory '${requirementsDirectory}' not found.`);
+		}
+	  });
+	
+	  context.subscriptions.push(checkRequirementsDisposable);
 }
 
 // This method is called when your extension is deactivated

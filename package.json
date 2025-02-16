@@ -16,6 +16,10 @@
       {
         "command": "helloworld.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "helloworld.checkRequirements",
+        "title": "Check Requirements"
       }
     ],
     "configuration": {
