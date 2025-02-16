@@ -45,6 +45,7 @@
     "views": {
       "helloworld-activitybar": [
         {
+          "type": "webview",
           "id": "helloworldView",
           "name": "HelloWorld View"
         }
