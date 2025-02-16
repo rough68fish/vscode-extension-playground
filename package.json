@@ -17,7 +17,18 @@
         "command": "helloworld.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Hello World Configuration",
+      "properties": {
+        "helloworld.requirementsDirectory": {
+          "type": "string",
+          "default": "./docs/requirements",
+          "description": "The directory that contains your requirements specifications."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
