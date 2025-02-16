@@ -1,51 +1,35 @@
-# helloworld README
+# HelloWorld README
 
-This is the README for your extension "helloworld". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "HelloWorld". This extension provides a simple example of a VS Code extension with a command to check for a requirements directory and a view to list the files in that directory.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Hello World Command**: Displays a "Hello VS Code!" message.
+- **Check Requirements Command**: Checks for the existence of a specified requirements directory in the currently open workspace and displays the count of files in the directory.
+- **Requirements View**: Adds an icon to the activity bar that opens a view listing the files in the specified requirements directory.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+This extension does not have any specific requirements or dependencies.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `helloworld.requirementsDirectory`: Specify the directory for requirements. Default is `./docs/requirements`.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+No known issues at this time.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release of HelloWorld extension.
+- Added "Hello World" command.
+- Added "Check Requirements" command.
+- Added a view to list files in the requirements directory.
 
 ---
 
